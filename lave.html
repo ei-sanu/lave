@@ -1,10 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Love Page</title>
-    <style>
+ <style>
         .hero {
             text-align: center;
             margin: 20px;
@@ -128,15 +122,18 @@
         }
 
         .magic-button {
-            background: linear-gradient(-45deg, #ff6b6b, #ff8e8e, #ff6b6b);
-            background-size: 200% 200%;
-            animation: buttonGradient 3s ease infinite;
+            padding: 15px 30px;
+            font-size: 1.2em;
             border: none;
-            padding: 10px 20px;
-            color: white;
             border-radius: 25px;
             cursor: pointer;
-            transition: transform 0.3s;
+            background: linear-gradient(-45deg, teal, green, blue);
+            background-size: 200% 200%;
+            animation: buttonGradient 3s ease infinite;
+            color: white;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+            margin-top: 10px;
+            transition: transform 0.3s ease;
             z-index: 2;
         }
 
@@ -235,23 +232,23 @@
     </div>
 
     <div class="images-container">
-        <img src="https://example.com/cutie.jpg" alt="Love Image 1" class="image">
-        <img src="https://example.com/subhraa.jpg" alt="Love Image 2" class="image">
-        <img src="https://example.com/sweetie.jpg" alt="Love Image 3" class="image">
-        <img src="https://example.com/uff.jpg" alt="Love Image 4" class="image">
+        <img src="cutie.jpg" alt="Love Image 1" class="image">
+        <img src="subhraa.jpg" alt="Love Image 2" class="image">
+        <img src="sweetie.jpg" alt="Love Image 3" class="image">
+        <img src="uff.jpg" alt="Love Image 4" class="image">
     </div>
 
     <div class="cards-container">
-        <div class="card">
-            <h2>U r the sweetest</h2>
-            <button class="magic-button" onclick="showMagic()">See magic</button>
+        <div>
+            <button class="love-button" onclick="window.location.href='flowers.html'">
+                <div class="card">
+                    <h2>U r the sweetest</h2>
+                    <p class="magic-button" >See magic</p>
+                   
+                    </button>
+                </div>
+            </button>
         </div>
     </div>
-
-    <script>
-        function showMagic() {
-            window.location.href = 'flowers.html';
-        }
-    </script>
 </body>
 </html>
