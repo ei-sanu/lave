@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+            background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+            background-size: 400% 400%;
+            animation: gradient 15s ease infinite;
+            height: 100vh;
+        }
+
+        .flower {
+            position: absolute;
+            pointer-events: none;
+            animation: fall linear;
+        }
+
+        @keyframes fall {
+            0% {
+                transform: translateY(-10vh) rotate(0deg);
+            }
+            100% {
+                transform: translateY(100vh) rotate(360deg);
+            }
+        }
+
+        @keyframes gradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .message-card {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background:transparent;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            width: 90%;
+            max-width: 500px;
+            z-index: 1000;
+            margin: 10px;
+        }
+
+        .message-card h2 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+        }
+
+        .message-card p {
+            font-size: 1rem;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .play-button {
+            width: 80%;
+            max-width: 250px;
+            padding: 15px 25px;
+            font-size: 1rem;
+            background: linear-gradient(-45deg, #ff69b4, #ff1493);
+            color: white;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            margin-top: 20px;
+            transition: transform 0.3s ease;
+        }
+
+        .play-button:hover {
+            transform: scale(1.05);
+        }
+
+        @media (min-width: 768px) {
+            .message-card {
+                padding: 30px;
+            }
+            
+            .message-card h2 {
+                font-size: 2rem;
+            }
+            
+            .message-card p {
+                font-size: 1.1rem;
+            }
+            
+            .play-button {
+                font-size: 1.1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="message-card">
+        <h2>My Dearest Love</h2>
+        <p>
+            Every moment with you feels like a beautiful dream come true. Your smile brightens my darkest days, 
+            and your love makes my heart skip a beat. You're not just my partner, you're my best friend, 
+            my soulmate, and my everything. I cherish every second we spend together and look forward to 
+            creating countless more memories with you.
+        </p>
+        <button class="play-button" onclick="window.location.href='video.html'">
+            See u through my eyes!!! ❤️
+        </button>
+    </div>
+
+    <script>
+        function createFlower() {
+            const flower = document.createElement('div');
+            flower.className = 'flower';
+            flower.innerHTML = '🌸';
+            flower.style.left = Math.random() * 100 + 'vw';
+            flower.style.fontSize = Math.random() * 20 + 20 + 'px';
+            flower.style.animation = `fall ${Math.random() * 2 + 3}s linear`;
+            document.body.appendChild(flower);
+            
+            flower.addEventListener('animationend', () => {
+                flower.remove();
+            });
+        }
+
+        setInterval(createFlower, 100);
+    </script>
+</body>
+</html>

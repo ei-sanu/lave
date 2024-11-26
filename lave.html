@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        .hero {
+            text-align: center;
+            margin: 20px;
+        }
+
+        .images-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            gap: 40px;
+            padding: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .image {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            transform: rotate(var(--rotation));
+            transition: transform 0.3s ease;
+            cursor: pointer;
+            opacity: 0;
+            animation: assembleImage 1s ease-out forwards;
+        }
+
+        .image:hover {
+            transform: rotate(0deg) scale(1.1);
+            box-shadow: 0 8px 16px rgba(0,0,0,0.3);
+            z-index: 1;
+        }
+
+        .image:nth-child(1) { 
+            --rotation: -5deg;
+            animation-delay: 0.2s;
+        }
+        .image:nth-child(2) { 
+            --rotation: 7deg;
+            animation-delay: 0.4s;
+        }
+        .image:nth-child(3) { 
+            --rotation: -3deg;
+            animation-delay: 0.6s;
+        }
+        .image:nth-child(4) { 
+            --rotation: 4deg;
+            animation-delay: 0.8s;
+        }
+
+        .cards-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+            padding: 20px;
+            justify-content: center;
+            align-items: center;
+            min-height: 50vh;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.5); /* White background with 50% opacity */
+            backdrop-filter: blur(10px);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            width: 300px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+        }
+
+        @media (max-width: 768px) {
+            .image {
+                width: 100px;
+                height: 100px;
+            }
+            .card {
+                width: 100%;
+            }
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+            background-size: 400% 400%;
+            animation: gradient 15s ease infinite;
+        }
+
+        @keyframes gradient {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        .hero h1, 
+        .hero p {
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .love-button {
+            background: none;
+            border: none;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+            width: 100%;
+        }
+
+        .love-button:hover {
+            transform: scale(1.05);
+        }
+
+        .magic-button {
+            padding: 15px 30px;
+            font-size: 1.2em;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            background: linear-gradient(-45deg, teal, green, blue);
+            background-size: 200% 200%;
+            animation: buttonGradient 3s ease infinite;
+            color: white;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+            margin-top: 10px;
+            transition: transform 0.3s ease;
+            z-index: 2;
+        }
+
+        .magic-button:hover {
+            transform: scale(1.1);
+        }
+
+        @keyframes buttonGradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        @keyframes assembleImage {
+            0% {
+                opacity: 0;
+                transform: translateY(50px) scale(0.5) rotate(var(--rotation));
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0) scale(1) rotate(var(--rotation));
+            }
+        }
+
+        /* Prevent nested button click conflicts */
+        .love-button .magic-button {
+            pointer-events: none;
+        }
+        .card .magic-button {
+            pointer-events: auto;
+        }
+
+        /* Mobile-first responsive styles */
+        .hero {
+            padding: 20px;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 1.8rem;
+            margin: 10px 0;
+        }
+
+        .images-container {
+            padding: 15px;
+            gap: 15px;
+        }
+
+        .image {
+            width: 120px;
+            height: 120px;
+        }
+
+        .cards-container {
+            padding: 15px;
+            width: 100%;
+        }
+
+        .card {
+            width: 90%;
+            max-width: 350px;
+            margin: 0 auto;
+            padding: 15px;
+        }
+
+        .magic-button {
+            width: 80%;
+            max-width: 250px;
+            font-size: 1rem;
+            padding: 12px 20px;
+        }
+
+        /* Media queries for larger screens */
+        @media (min-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .image {
+                width: 150px;
+                height: 150px;
+            }
+
+            .card {
+                width: 400px;
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="hero">
+        <h1>For My Wonderful Sweetieee!!</h1>
+        <div class="heart">❤️</div>
+        <p>Every day with you is special</p>
+    </div>
+
+    <div class="images-container">
+        <img src="cutie.jpg" alt="Love Image 1" class="image">
+        <img src="subhraa.jpg" alt="Love Image 2" class="image">
+        <img src="sweetie.jpg" alt="Love Image 3" class="image">
+        <img src="uff.jpg" alt="Love Image 4" class="image">
+    </div>
+
+    <div class="cards-container">
+        <div class="card">
+            <h2>U r the sweetest</h2>
+            <button class="magic-button" onclick="window.location.href='flowers.html'">See magic</button>
+        </div>
+    </div>
+</body>
+</html>
+
+    <!-- <style>
+        .hero {
+            text-align: center;
+            margin: 20px;
+        }
+
+        .images-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            gap: 40px;
+            padding: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .image {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            transform: rotate(var(--rotation));
+            transition: transform 0.3s ease;
+            cursor: pointer;
+            opacity: 0;
+            animation: assembleImage 1s ease-out forwards;
+        }
+
+        .image:hover {
+            transform: rotate(0deg) scale(1.1);
+            box-shadow: 0 8px 16px rgba(0,0,0,0.3);
+            z-index: 1;
+        }
+
+        .image:nth-child(1) { 
+            --rotation: -5deg;
+            animation-delay: 0.2s;
+        }
+        .image:nth-child(2) { 
+            --rotation: 7deg;
+            animation-delay: 0.4s;
+        }
+        .image:nth-child(3) { 
+            --rotation: -3deg;
+            animation-delay: 0.6s;
+        }
+        .image:nth-child(4) { 
+            --rotation: 4deg;
+            animation-delay: 0.8s;
+        }
+
+        .cards-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+            padding: 20px;
+            justify-content: center;
+            align-items: center;
+            min-height: 50vh;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.5); /* White background with 50% opacity */
+            backdrop-filter: blur(10px);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            width: 300px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+        }
+
+        @media (max-width: 768px) {
+            .image {
+                width: 100px;
+                height: 100px;
+            }
+            .card {
+                width: 100%;
+            }
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+            background-size: 400% 400%;
+            animation: gradient 15s ease infinite;
+        }
+
+        @keyframes gradient {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        .hero h1, 
+        .hero p {
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .love-button {
+            background: none;
+            border: none;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+            width: 100%;
+        }
+
+        .love-button:hover {
+            transform: scale(1.05);
+        }
+
+        .magic-button {
+            padding: 15px 30px;
+            font-size: 1.2em;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            background: linear-gradient(-45deg, teal, green, blue);
+            background-size: 200% 200%;
+            animation: buttonGradient 3s ease infinite;
+            color: white;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+            margin-top: 10px;
+            transition: transform 0.3s ease;
+            z-index: 2;
+        }
+
+        .magic-button:hover {
+            transform: scale(1.1);
+        }
+
+        @keyframes buttonGradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        @keyframes assembleImage {
+            0% {
+                opacity: 0;
+                transform: translateY(50px) scale(0.5) rotate(var(--rotation));
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0) scale(1) rotate(var(--rotation));
+            }
+        }
+
+        /* Prevent nested button click conflicts */
+        .love-button .magic-button {
+            pointer-events: none;
+        }
+        .card .magic-button {
+            pointer-events: auto;
+        }
+
+        /* Mobile-first responsive styles */
+        .hero {
+            padding: 20px;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 1.8rem;
+            margin: 10px 0;
+        }
+
+        .images-container {
+            padding: 15px;
+            gap: 15px;
+        }
+
+        .image {
+            width: 120px;
+            height: 120px;
+        }
+
+        .cards-container {
+            padding: 15px;
+            width: 100%;
+        }
+
+        .card {
+            width: 90%;
+            max-width: 350px;
+            margin: 0 auto;
+            padding: 15px;
+        }
+
+        .magic-button {
+            width: 80%;
+            max-width: 250px;
+            font-size: 1rem;
+            padding: 12px 20px;
+        }
+
+        /* Media queries for larger screens */
+        @media (min-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .image {
+                width: 150px;
+                height: 150px;
+            }
+
+            .card {
+                width: 400px;
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="hero">
+        <h1>For My Wonderful Sweetieee!!</h1>
+        <div class="heart">❤️</div>
+        <p>Every day with you is special</p>
+    </div>
+
+    <div class="images-container">
+        <img src="cutie.jpg" alt="Love Image 1" class="image">
+        <img src="subhraa.jpg" alt="Love Image 2" class="image">
+        <img src="sweetie.jpg" alt="Love Image 3" class="image">
+        <img src="uff.jpg" alt="Love Image 4" class="image">
+    </div>
+
+    <div class="cards-container">
+        <div>
+            <button class="love-button" onclick="window.location.href='flowers.html'">
+                <div class="card">
+                    <h2>U r the sweetest</h2>
+                    <p class="magic-button" >See magic</p>
+                   
+                    </button>
+                </div>
+            </button>
+        </div>
+    </div>
+</body>
+</html> -->
